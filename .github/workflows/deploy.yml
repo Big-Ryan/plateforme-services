@@ -8,8 +8,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  BACKEND_IMAGE:  ghcr.io/${{ github.repository_owner }}/plateforme-backend
-  FRONTEND_IMAGE: ghcr.io/${{ github.repository_owner }}/plateforme-frontend
+  BACKEND_IMAGE:  ghcr.io/big-ryan/plateforme-backend
+  FRONTEND_IMAGE: ghcr.io/big-ryan/plateforme-frontend
 
 jobs:
 
