@@ -1,0 +1,48 @@
+# .gitignore — Plateforme Services
+
+# Secrets
+.env
+*.env.local
+*.pem
+*.key
+*.p12
+*.jks
+
+# Java / Maven
+backend/target/
+backend/.mvn/
+!backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+.mvn/timing.properties
+
+# Spring Boot
+backend/src/main/resources/application-local.yml
+
+# Node / Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.env
+
+# Docker
+nginx/ssl/
+!nginx/ssl/.gitkeep
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Tests
+backend/src/test/resources/application-test-local.yml

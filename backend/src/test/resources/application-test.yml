@@ -1,0 +1,41 @@
+spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  jpa:
+    show-sql: false
+  mail:
+    host: localhost
+    port: 25
+    username: test
+    password: test
+
+jwt:
+  secret: dGVzdC1zZWNyZXQtY2xleS10ZXN0LXNlY3JldC1jbGV5LXRlc3Qtc2VjcmV0LWNsZXktdGVzdA==
+  access-token-expiration-ms: 900000
+  refresh-token-expiration-ms: 86400000
+
+paypal:
+  client-id: test
+  client-secret: test
+  mode: sandbox
+  webhook-id: test
+
+storage:
+  minio:
+    endpoint: http://localhost:9000
+    access-key: test
+    secret-key: testtest
+    bucket-name: test
+
+app:
+  frontend-url: http://localhost:4200
+  mail-from: noreply@test.cm
+  mail-from-name: Test
+  cors:
+    allowed-origins: http://localhost:4200
+
+logging:
+  level:
+    root: WARN
+    com.plateforme: WARN

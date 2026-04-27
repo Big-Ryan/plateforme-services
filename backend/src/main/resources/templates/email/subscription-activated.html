@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonnement activé</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .header { background: #059669; padding: 32px 40px; text-align: center; }
+        .header h1 { color: #ffffff; margin: 0; font-size: 24px; font-weight: 600; }
+        .badge { display: inline-block; background: #d1fae5; color: #065f46; padding: 6px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; margin: 8px 0 0; }
+        .body { padding: 40px; }
+        .body p { color: #374151; font-size: 16px; line-height: 1.6; margin: 0 0 16px; }
+        .summary { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+        .summary table { width: 100%; border-collapse: collapse; }
+        .summary td { padding: 6px 0; color: #374151; font-size: 15px; }
+        .summary td:first-child { font-weight: 600; color: #065f46; width: 40%; }
+        .btn { display: inline-block; background: #059669; color: #ffffff !important; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600; margin: 24px 0; }
+        .footer { background: #f9fafb; padding: 24px 40px; text-align: center; border-top: 1px solid #e5e7eb; }
+        .footer p { color: #9ca3af; font-size: 13px; margin: 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Abonnement activé !</h1>
+        <div class="badge" th:text="${planName}">Plan Mensuel</div>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong th:text="${firstName}">Prénom</strong>,</p>
+        <p>Votre abonnement est maintenant actif. Vos services sont visibles par les clients sur la plateforme.</p>
+        <div class="summary">
+            <table>
+                <tr><td>Plan</td><td th:text="${planName}">Mensuel</td></tr>
+                <tr><td>Début</td><td th:text="${startDate}">01/01/2025</td></tr>
+                <tr><td>Fin</td><td th:text="${endDate}">01/02/2025</td></tr>
+                <tr><td>Services max</td><td th:text="${maxServices}">5</td></tr>
+            </table>
+        </div>
+        <div style="text-align: center;">
+            <a th:href="${dashboardUrl}" class="btn">Accéder à mon tableau de bord</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© Plateforme Services Cameroun · Cet email a été envoyé automatiquement.</p>
+    </div>
+</div>
+</body>
+</html>

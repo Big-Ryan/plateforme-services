@@ -1,0 +1,62 @@
+version: '3.9'
+
+# docker-compose.prod.yml — Overrides de production
+# Usage : docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+
+  postgres:
+    restart: always
+    ports: []  # Ne pas exposer PostgreSQL en prod
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+  redis:
+    restart: always
+    ports: []  # Ne pas exposer Redis en prod
+
+  minio:
+    restart: always
+    ports:
+      - "9000:9000"  # Garder pour Nginx upstream, ne pas exposer 9001 (console)
+
+  backend:
+    restart: always
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      PAYPAL_MODE: live
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+
+  nginx:
+    image: nginx:alpine
+    container_name: plateforme_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - certbot_data:/var/www/certbot:ro
+    networks:
+      - plateforme_net
+    depends_on:
+      - backend
+
+  certbot:
+    image: certbot/certbot
+    container_name: plateforme_certbot
+    volumes:
+      - ./nginx/ssl:/etc/letsencrypt
+      - certbot_data:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot
+             --email ${CERTBOT_EMAIL} --agree-tos --no-eff-email
+             -d ${DOMAIN}
+
+volumes:
+  certbot_data:

@@ -1,0 +1,59 @@
+<mat-toolbar color="primary" class="navbar">
+  <a routerLink="/catalogue" class="brand">
+    <mat-icon>storefront</mat-icon>
+    <span>Plateforme Services</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <nav class="nav-links">
+    <a mat-button routerLink="/catalogue" routerLinkActive="nav-active">
+      Catalogue
+    </a>
+
+    <ng-container *ngIf="!(currentUser$ | async)">
+      <a mat-button routerLink="/auth/login" routerLinkActive="nav-active">
+        Connexion
+      </a>
+      <a mat-raised-button routerLink="/auth/register" class="btn-register">
+        S'inscrire
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="currentUser$ | async as user">
+      <ng-container *ngIf="user.role === 'PROVIDER'">
+        <a mat-button routerLink="/provider/dashboard" routerLinkActive="nav-active">Dashboard</a>
+        <a mat-button routerLink="/provider/services"  routerLinkActive="nav-active">Mes services</a>
+        <a mat-button routerLink="/provider/negotiations" routerLinkActive="nav-active">Négociations</a>
+      </ng-container>
+      <ng-container *ngIf="user.role === 'CLIENT'">
+        <a mat-button routerLink="/client/dashboard" routerLinkActive="nav-active">Mon espace</a>
+      </ng-container>
+      <ng-container *ngIf="user.role === 'ADMIN'">
+        <a mat-button routerLink="/admin/dashboard" routerLinkActive="nav-active">Administration</a>
+      </ng-container>
+
+      <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-avatar-btn">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu" xPosition="before">
+        <div class="menu-user-info">
+          <mat-icon>person</mat-icon>
+          <div>
+            <strong>{{ user.firstName }} {{ user.lastName }}</strong>
+            <small>{{ user.email }}</small>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Déconnexion</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+  </nav>
+</mat-toolbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

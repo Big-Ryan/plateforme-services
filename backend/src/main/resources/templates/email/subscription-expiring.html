@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre abonnement expire bientôt</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .header { background: #d97706; padding: 32px 40px; text-align: center; }
+        .header h1 { color: #ffffff; margin: 0; font-size: 24px; font-weight: 600; }
+        .body { padding: 40px; }
+        .body p { color: #374151; font-size: 16px; line-height: 1.6; margin: 0 0 16px; }
+        .alert { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+        .alert p { color: #92400e; font-size: 15px; margin: 0; }
+        .btn { display: inline-block; background: #d97706; color: #ffffff !important; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600; margin: 24px 0; }
+        .footer { background: #f9fafb; padding: 24px 40px; text-align: center; border-top: 1px solid #e5e7eb; }
+        .footer p { color: #9ca3af; font-size: 13px; margin: 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Abonnement expirant bientôt</h1>
+    </div>
+    <div class="body">
+        <p>Bonjour <strong th:text="${firstName}">Prénom</strong>,</p>
+        <div class="alert">
+            <p>⏰ Votre abonnement <strong th:text="${planName}">Mensuel</strong> expire dans <strong th:text="${daysRemaining}">3</strong> jour(s), le <strong th:text="${endDate}">01/02/2025</strong>.</p>
+        </div>
+        <p>Si votre abonnement n'est pas renouvelé à cette date, vos services seront masqués du catalogue jusqu'au renouvellement.</p>
+        <div style="text-align: center;">
+            <a th:href="${renewUrl}" class="btn">Renouveler mon abonnement</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© Plateforme Services Cameroun · Cet email a été envoyé automatiquement.</p>
+    </div>
+</div>
+</body>
+</html>
