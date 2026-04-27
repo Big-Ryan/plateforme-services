@@ -13,7 +13,6 @@ env:
 
 jobs:
 
-  # Job 1 : Tests Backend
   test-backend:
     name: Tests Backend (Java 17)
     runs-on: ubuntu-latest
@@ -85,7 +84,6 @@ jobs:
           name: test-results
           path: plateforme/backend/target/surefire-reports/
 
-  # Job 2 : Build Frontend
   test-frontend:
     name: Build Frontend (Node 20)
     runs-on: ubuntu-latest
@@ -109,7 +107,6 @@ jobs:
         working-directory: ./plateforme/frontend
         run: npm run build -- --configuration production
 
-  # Job 3 : Build & Push Docker Images
   build-and-push:
     name: Build & Push Docker Images
     runs-on: ubuntu-latest
@@ -167,7 +164,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  # Job 4 : Deploy to VPS
   deploy:
     name: Deploy to VPS
     runs-on: ubuntu-latest
@@ -176,7 +172,6 @@ jobs:
 
     environment:
       name: production
-      url: https://${{ secrets.DOMAIN }}
 
     steps:
       - name: Deploy via SSH
