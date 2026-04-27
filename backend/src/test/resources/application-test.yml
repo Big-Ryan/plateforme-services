@@ -28,7 +28,7 @@ spring:
             enable: false
 
 jwt:
-  secret: dGVzdC1zZWNyZXQta2V5LXBvdXItbGVzLXRlc3RzLXVuaXRhaXJlcy0yMDI0LXBsYXRlZm9ybWU=
+  secret: dGVzdC1zZWNyZXQtY2xleS10ZXN0LXNlY3JldC1jbGV5LXRlc3Qtc2VjcmV0LWNsZXktdGVzdA==
   access-token-expiration: 900000
   refresh-token-expiration: 86400000
 
@@ -47,12 +47,11 @@ minio:
 admin:
   password: admin123
 
-# Surcharge des variables d'environnement pour les tests
 MINIO_ACCESS_KEY: minioadmin
 MINIO_SECRET_KEY: minioadmin123
 MINIO_ENDPOINT: http://localhost:9000
 MINIO_BUCKET: test-bucket
-JWT_SECRET: dGVzdC1zZWNyZXQta2V5LXBvdXItbGVzLXRlc3RzLXVuaXRhaXJlcy0yMDI0LXBsYXRlZm9ybWU=
+JWT_SECRET: dGVzdC1zZWNyZXQtY2xleS10ZXN0LXNlY3JldC1jbGV5LXRlc3Qtc2VjcmV0LWNsZXktdGVzdA==
 MAIL_HOST: localhost
 MAIL_PORT: 3025
 MAIL_USERNAME: test@test.com
