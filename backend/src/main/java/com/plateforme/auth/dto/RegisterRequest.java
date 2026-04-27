@@ -2,6 +2,7 @@ package com.plateforme.auth.dto;
 
 import com.plateforme.users.entity.User;
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class RegisterRequest {
 
     @NotBlank(message = "L'email est obligatoire")
