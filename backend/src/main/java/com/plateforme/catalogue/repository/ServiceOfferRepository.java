@@ -66,4 +66,6 @@ public interface ServiceOfferRepository extends JpaRepository<ServiceOffer, UUID
     void incrementViewCount(@Param("id") UUID id);
 
     long countByStatus(ServiceOffer.Status status);
+
+    long countByCategoryId(UUID categoryId);
 }

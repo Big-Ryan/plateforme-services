@@ -58,10 +58,19 @@ import { AdminService, DashboardStats } from '../admin.service';
             <mat-icon class="arrow">arrow_forward</mat-icon>
           </mat-card-content>
         </mat-card>
+
         <mat-card class="nav-card" routerLink="/admin/subscriptions">
           <mat-card-content>
             <mat-icon>subscriptions</mat-icon>
             <span>Gérer les abonnements</span>
+            <mat-icon class="arrow">arrow_forward</mat-icon>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="nav-card" routerLink="/admin/categories">
+          <mat-card-content>
+            <mat-icon>category</mat-icon>
+            <span>Gérer les catégories</span>
             <mat-icon class="arrow">arrow_forward</mat-icon>
           </mat-card-content>
         </mat-card>
@@ -95,8 +104,8 @@ import { AdminService, DashboardStats } from '../admin.service';
     .kpi-label { font-size: 13px; color: #555; margin: 4px 0 2px; font-weight: 500; }
     .kpi-sub   { font-size: 11px; color: #999; }
 
-    .nav-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    @media (max-width: 600px) { .nav-cards { grid-template-columns: 1fr; } }
+    .nav-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 700px) { .nav-cards { grid-template-columns: 1fr; } }
     .nav-card {
       border-radius: 12px; cursor: pointer;
       transition: transform .2s, box-shadow .2s;
